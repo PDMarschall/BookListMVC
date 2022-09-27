@@ -6,7 +6,7 @@ $(document).ready(function () {
 });
 
 function loadDataTable() {
-    dataTable = $('#DT_load').DataTable({
+    dataTable = $("#DataTable_Books").DataTable({
         ajax: {
             url: "/books/getall/",
             type: "GET",
