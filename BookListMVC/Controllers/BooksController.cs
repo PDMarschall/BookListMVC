@@ -125,7 +125,6 @@ namespace BookListMVC.Controllers
         {
             string jsonString = JsonSerializer.Serialize(book);
             byte[] jsonBytes = Encoding.UTF8.GetBytes(jsonString);
-
             MemoryStream memory = new MemoryStream(jsonBytes);
 
             return memory;
@@ -147,7 +146,6 @@ namespace BookListMVC.Controllers
             }
 
             byte[] jsonBytes = Encoding.UTF8.GetBytes(xmlString);
-
             MemoryStream memory = new MemoryStream(jsonBytes);
 
             return memory;
@@ -155,13 +153,12 @@ namespace BookListMVC.Controllers
 
         private MemoryStream GetYamlBook(Book book)
         {
-            var serializer = new SerializerBuilder()
+            ISerializer serializer = new SerializerBuilder()
                 .WithNamingConvention(CamelCaseNamingConvention.Instance)
                 .Build();
 
             string yamlString = serializer.Serialize(book);
             byte[] yamlBytes = Encoding.UTF8.GetBytes(yamlString);
-
             MemoryStream memory = new MemoryStream(yamlBytes);
 
             return memory;
